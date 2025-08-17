@@ -5,7 +5,6 @@ import os
 from config.env import *
 from model.cnn import MNISTModel
 
-
 def save_model(epoch:int, model:nn.Module, optimizer: optim.Optimizer, best_accuracy, model_path):
     torch.save({
         "epoch": epoch, 
@@ -24,11 +23,11 @@ def load_model():
 
     checkpoint = torch.load(MODEL_PATH, map_location=DEVICE)
     model = MNISTModel().to(DEVICE)
-    model.load_state_dict(checkpoint["model_state_dict"])
+    model.load_state_dict(checkpoint['model_state_dict'])
 
     print(f"Model loaded from {MODEL_PATH}")
-    print(f"Best tested accuracy: {checkpoint["best_accuracy"]}")
-    print(f"Trained for {checkpoint["epoch"]} epochs")
+    print(f"Best tested accuracy: {checkpoint['best_accuracy']:.2f}")
+    print(f"Trained for {checkpoint['epoch'] + 1} epochs")
 
     return model, checkpoint
 

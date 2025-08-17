@@ -95,6 +95,7 @@ class TrainingModel:
         best_accuracy = 0
         patience = 5 
         patience_counter = 0
+
         for epoch in range(self.epochs):
             print(f"Epoch {epoch + 1} / {self.epochs}")
             
